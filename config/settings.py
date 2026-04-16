@@ -77,7 +77,7 @@ else:
             "ENGINE": "django.db.backends.postgresql",
             "NAME": os.getenv("POSTGRES_DB", "user_management"),
             "USER": os.getenv("POSTGRES_USER", "user_management"),
-            "PASSWORD": os.getenv("POSTGRES_PASSWORD", "user_management_password"),
+            "PASSWORD": os.getenv("POSTGRES_PASSWORD", "manik@123"),
             "HOST": os.getenv("POSTGRES_HOST", "localhost"),
             "PORT": os.getenv("POSTGRES_PORT", "5432"),
         }

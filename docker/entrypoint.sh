@@ -15,7 +15,7 @@ import psycopg
 config = {
     "dbname": os.getenv("POSTGRES_DB", "user_management"),
     "user": os.getenv("POSTGRES_USER", "user_management"),
-    "password": os.getenv("POSTGRES_PASSWORD", "user_management_password"),
+    "password": os.getenv("POSTGRES_PASSWORD", "manik@123"),
     "host": os.getenv("POSTGRES_HOST", "db"),
     "port": os.getenv("POSTGRES_PORT", "5432"),
 }

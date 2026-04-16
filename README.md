@@ -49,7 +49,7 @@ Open `psql` with an admin account and run:
 
 ```sql
 CREATE DATABASE user_management;
-CREATE USER user_management WITH PASSWORD 'user_management_password';
+CREATE USER user_management WITH PASSWORD 'manik@123';
 GRANT ALL PRIVILEGES ON DATABASE user_management TO user_management;
 ```
 
@@ -75,7 +75,7 @@ $env:DJANGO_DEBUG = "True"
 $env:DJANGO_ALLOWED_HOSTS = "127.0.0.1,localhost"
 $env:POSTGRES_DB = "user_management"
 $env:POSTGRES_USER = "user_management"
-$env:POSTGRES_PASSWORD = "user_management_password"
+$env:POSTGRES_PASSWORD = "manik@123"
 $env:POSTGRES_HOST = "localhost"
 $env:POSTGRES_PORT = "5432"
 ```
@@ -135,7 +135,7 @@ docker run -d `
   --network user-management-net `
   -e POSTGRES_DB=user_management `
   -e POSTGRES_USER=user_management `
-  -e POSTGRES_PASSWORD=user_management_password `
+  -e POSTGRES_PASSWORD=manik@123 `
   -v postgres_data:/var/lib/postgresql/data `
   postgres:16-alpine
 ```
@@ -152,7 +152,7 @@ docker run -d `
   -e DJANGO_CSRF_TRUSTED_ORIGINS=http://localhost:8080 `
   -e POSTGRES_DB=user_management `
   -e POSTGRES_USER=user_management `
-  -e POSTGRES_PASSWORD=user_management_password `
+  -e POSTGRES_PASSWORD=manik@123 `
   -e POSTGRES_HOST=user-management-db `
   -e POSTGRES_PORT=5432 `
   -v static_volume:/app/staticfiles `

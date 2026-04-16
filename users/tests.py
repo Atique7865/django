@@ -7,7 +7,7 @@ class UserManagementViewsTests(TestCase):
     def setUp(self):
         self.staff_user = User.objects.create_user(
             username="adminuser",
-            password="AdminPass123!",
+            password="manik@123",
             email="admin@example.com",
             is_staff=True,
         )
@@ -28,8 +28,8 @@ class UserManagementViewsTests(TestCase):
                 "email": "jane@example.com",
                 "is_staff": "on",
                 "is_active": "on",
-                "password1": "UserPass123!",
-                "password2": "UserPass123!",
+                "password1": "manik@123",
+                "password2": "manik@123",
             },
         )
 
@@ -39,7 +39,7 @@ class UserManagementViewsTests(TestCase):
     def test_non_staff_user_gets_forbidden(self):
         regular_user = User.objects.create_user(
             username="basicuser",
-            password="BasicPass123!",
+            password="manik@123",
         )
         self.client.force_login(regular_user)
         response = self.client.get(reverse("dashboard"))
