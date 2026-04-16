@@ -1,1 +1,1 @@
-"""This application relies on Django's built-in User model."""
+"""The application uses Django's built-in auth user model."""

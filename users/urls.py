@@ -23,3 +23,4 @@ urlpatterns = [
     path("users/<int:pk>/edit/", UserUpdateView.as_view(), name="user-update"),
     path("users/<int:pk>/delete/", UserDeleteView.as_view(), name="user-delete"),
 ]
+

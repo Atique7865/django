@@ -11,8 +11,8 @@
     <header class="site-header">
         <div class="container nav-shell">
             <div>
-                <a class="brand" href="{% url 'dashboard' %}">User Management</a>
-                <p class="tagline">A simple three-tier Django example</p>
+                <a class="brand" href="{% url 'home' %}">User Management</a>
+                <p class="tagline">Simple Django CRUD with PostgreSQL, Docker, and Kubernetes assets</p>
             </div>
             {% if request.user.is_authenticated %}
                 <nav class="nav-links">
@@ -41,3 +41,4 @@
     </main>
 </body>
 </html>
+

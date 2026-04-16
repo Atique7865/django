@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-web
+  namespace: user-management
+spec:
+  selector:
+    app: django-web
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8000
+

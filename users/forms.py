@@ -82,3 +82,4 @@ class ManagedUserUpdateForm(ManagedUserBaseForm):
                     self.add_error("password1", error)
 
         return cleaned_data
+

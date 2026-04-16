@@ -127,3 +127,4 @@ class UserDeleteView(StaffRequiredMixin, DeleteView):
         services.delete_managed_user(self.object)
         messages.success(request, f"User '{username}' was deleted.")
         return redirect(self.success_url)
+

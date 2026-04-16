@@ -57,3 +57,4 @@ def update_managed_user(user: User, cleaned_data: dict) -> User:
 @transaction.atomic
 def delete_managed_user(user: User) -> None:
     user.delete()
+
