@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ form_title }} | User Management{% endblock %}
+
+{% block content %}
+<section class="card narrow-card">
+    <div class="section-heading">
+        <h1>{{ form_title }}</h1>
+        <a href="{% url 'user-list' %}">Back to users</a>
+    </div>
+
+    <form method="post" class="stacked-form">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <div class="form-row">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <div class="muted">{{ field.help_text }}</div>
+                {% endif %}
+                {% if field.errors %}
+                    <div class="field-error">{{ field.errors|join:", " }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="primary-button">{{ submit_label }}</button>
+    </form>
+</section>
+{% endblock %}

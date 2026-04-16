@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}User Management{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-shell">
+            <div>
+                <a class="brand" href="{% url 'dashboard' %}">User Management</a>
+                <p class="tagline">A simple three-tier Django example</p>
+            </div>
+            {% if request.user.is_authenticated %}
+                <nav class="nav-links">
+                    <a href="{% url 'dashboard' %}">Dashboard</a>
+                    <a href="{% url 'user-list' %}">Users</a>
+                    <a href="{% url 'admin:index' %}">Admin</a>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="link-button">Logout</button>
+                    </form>
+                </nav>
+            {% endif %}
+        </div>
+    </header>
+
+    <main class="container">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

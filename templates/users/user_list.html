@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Users | User Management{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h1>Users</h1>
+        <p class="muted">Search, review, and maintain user accounts from one page.</p>
+    </div>
+    <a href="{% url 'user-create' %}" class="primary-button">New user</a>
+</section>
+
+<section class="card">
+    <form method="get" class="search-form">
+        <input type="search" name="q" value="{{ query }}" placeholder="Search by username, name, or email">
+        <button type="submit" class="secondary-button">Search</button>
+    </form>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Joined</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for managed_user in managed_users %}
+                    <tr>
+                        <td><a href="{% url 'user-detail' managed_user.pk %}">{{ managed_user.username }}</a></td>
+                        <td>{{ managed_user.get_full_name|default:"-" }}</td>
+                        <td>{{ managed_user.email|default:"-" }}</td>
+                        <td>
+                            {% if managed_user.is_superuser %}
+                                Superuser
+                            {% elif managed_user.is_staff %}
+                                Staff
+                            {% else %}
+                                Standard
+                            {% endif %}
+                        </td>
+                        <td>{% if managed_user.is_active %}Active{% else %}Inactive{% endif %}</td>
+                        <td>{{ managed_user.date_joined|date:"Y-m-d H:i" }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6">No users matched your search.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% if is_paginated %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?q={{ query }}&page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+            <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}
+                <a href="?q={{ query }}&page={{ page_obj.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

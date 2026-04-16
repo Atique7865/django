@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | User Management{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h1>User management dashboard</h1>
+        <p class="muted">Presentation, service, and data tiers are separated so the UI stays simple and the business logic remains reusable.</p>
+    </div>
+    <a href="{% url 'user-create' %}" class="primary-button">Create user</a>
+</section>
+
+<section class="stats-grid">
+    <article class="card stat-card">
+        <span class="stat-label">Total users</span>
+        <strong class="stat-value">{{ total_users }}</strong>
+    </article>
+    <article class="card stat-card">
+        <span class="stat-label">Active users</span>
+        <strong class="stat-value">{{ active_users }}</strong>
+    </article>
+    <article class="card stat-card">
+        <span class="stat-label">Staff users</span>
+        <strong class="stat-value">{{ staff_users }}</strong>
+    </article>
+</section>
+
+<section class="card">
+    <div class="section-heading">
+        <h2>Recently added users</h2>
+        <a href="{% url 'user-list' %}">View all users</a>
+    </div>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for managed_user in recent_users %}
+                    <tr>
+                        <td><a href="{% url 'user-detail' managed_user.pk %}">{{ managed_user.username }}</a></td>
+                        <td>{{ managed_user.get_full_name|default:"-" }}</td>
+                        <td>{{ managed_user.email|default:"-" }}</td>
+                        <td>
+                            {% if managed_user.is_staff %}<span class="badge">Staff</span>{% endif %}
+                            {% if managed_user.is_superuser %}<span class="badge accent">Superuser</span>{% endif %}
+                            {% if managed_user.is_active %}<span class="badge success">Active</span>{% else %}<span class="badge danger">Inactive</span>{% endif %}
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">No users have been created yet.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

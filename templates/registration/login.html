@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Login | User Management{% endblock %}
+
+{% block content %}
+<section class="card narrow-card">
+    <h1>Sign in</h1>
+    <p class="muted">Use a staff or superuser account to manage users from the UI.</p>
+
+    <form method="post" class="stacked-form">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <div class="form-row">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="field-error">{{ field.errors|join:", " }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="primary-button">Login</button>
+    </form>
+</section>
+{% endblock %}

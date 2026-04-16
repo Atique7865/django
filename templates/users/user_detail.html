@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}{{ managed_user.username }} | User Management{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <h1>{{ managed_user.username }}</h1>
+        <p class="muted">Review account details and update the user from this page.</p>
+    </div>
+    <div class="action-links">
+        <a href="{% url 'user-update' managed_user.pk %}" class="secondary-button">Edit</a>
+        <a href="{% url 'user-delete' managed_user.pk %}" class="danger-button">Delete</a>
+    </div>
+</section>
+
+<section class="details-grid">
+    <article class="card">
+        <h2>Profile</h2>
+        <dl class="detail-list">
+            <div><dt>Full name</dt><dd>{{ managed_user.get_full_name|default:"-" }}</dd></div>
+            <div><dt>Email</dt><dd>{{ managed_user.email|default:"-" }}</dd></div>
+            <div><dt>Date joined</dt><dd>{{ managed_user.date_joined|date:"Y-m-d H:i" }}</dd></div>
+            <div><dt>Last login</dt><dd>{{ managed_user.last_login|date:"Y-m-d H:i"|default:"Never" }}</dd></div>
+        </dl>
+    </article>
+
+    <article class="card">
+        <h2>Permissions</h2>
+        <dl class="detail-list">
+            <div><dt>Staff</dt><dd>{% if managed_user.is_staff %}Yes{% else %}No{% endif %}</dd></div>
+            <div><dt>Superuser</dt><dd>{% if managed_user.is_superuser %}Yes{% else %}No{% endif %}</dd></div>
+            <div><dt>Active</dt><dd>{% if managed_user.is_active %}Yes{% else %}No{% endif %}</dd></div>
+        </dl>
+    </article>
+</section>
+{% endblock %}

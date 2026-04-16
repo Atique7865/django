@@ -1,0 +1,271 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1d2939;
+}
+
+a {
+    color: #175cd3;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: min(1100px, calc(100% - 2rem));
+    margin: 0 auto;
+}
+
+.site-header {
+    background: #101828;
+    color: #fff;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.nav-shell {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+}
+
+.brand {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.tagline {
+    margin: 0.25rem 0 0;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a,
+.link-button {
+    color: #fff;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+}
+
+.hero,
+.section-heading,
+.inline-actions,
+.search-form,
+.pagination,
+.action-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+    margin-bottom: 1.5rem;
+}
+
+.narrow-card {
+    max-width: 600px;
+}
+
+.stats-grid,
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.stat-card {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    color: #475467;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+}
+
+.stacked-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.form-row {
+    display: grid;
+    gap: 0.4rem;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid #d0d5dd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+input[type="checkbox"] {
+    width: auto;
+}
+
+.primary-button,
+.secondary-button,
+.danger-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.primary-button {
+    background: #175cd3;
+    color: #fff;
+}
+
+.secondary-button {
+    background: #e4e7ec;
+    color: #1d2939;
+}
+
+.danger-button {
+    background: #d92d20;
+    color: #fff;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 0.9rem 0.75rem;
+    border-bottom: 1px solid #eaecf0;
+}
+
+th {
+    color: #475467;
+    font-size: 0.95rem;
+}
+
+.detail-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.detail-list div {
+    display: grid;
+    gap: 0.2rem;
+}
+
+dt {
+    color: #475467;
+    font-size: 0.9rem;
+}
+
+dd {
+    margin: 0;
+    font-weight: 600;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    margin-right: 0.35rem;
+    border-radius: 999px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 0.8rem;
+}
+
+.badge.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.badge.danger {
+    background: #fee4e2;
+    color: #b42318;
+}
+
+.badge.accent {
+    background: #f4e8ff;
+    color: #7a2eab;
+}
+
+.messages {
+    margin-bottom: 1rem;
+}
+
+.message {
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 0.75rem;
+}
+
+.message.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.message.error {
+    background: #fee4e2;
+    color: #b42318;
+}
+
+.field-error {
+    color: #b42318;
+    font-size: 0.9rem;
+}
+
+.muted {
+    color: #475467;
+}
+
+@media (max-width: 700px) {
+    .nav-shell,
+    .hero,
+    .section-heading,
+    .search-form,
+    .inline-actions,
+    .pagination,
+    .action-links {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

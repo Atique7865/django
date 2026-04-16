@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Delete {{ managed_user.username }} | User Management{% endblock %}
+
+{% block content %}
+<section class="card narrow-card">
+    <h1>Delete user</h1>
+    <p>Are you sure you want to remove <strong>{{ managed_user.username }}</strong>? This action cannot be undone.</p>
+
+    <form method="post" class="inline-actions">
+        {% csrf_token %}
+        <button type="submit" class="danger-button">Yes, delete user</button>
+        <a href="{% url 'user-detail' managed_user.pk %}" class="secondary-button">Cancel</a>
+    </form>
+</section>
+{% endblock %}
